@@ -14,3 +14,19 @@ td {
     margin: 0 0 0 0;
     border-collapse: collapse;
 }
+
+#toprow {
+    border-top: hidden;
+}
+
+#bottomrow {
+    border-bottom: hidden;
+}
+
+#leftcolumn {
+    border-left: hidden;
+}
+
+#rightcolumn {
+    border-right: hidden;
+}
