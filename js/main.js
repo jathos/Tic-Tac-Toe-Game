@@ -20,8 +20,9 @@ const players = {
                 w5: ["a2", "b2", "c2"],
                 w6: ["a3", "b3", "c3"],
                 w7: ["a1", "b2", "c3"],
-                w8: ["a3", "b2", "c1"]
-            },
+                w8: ["a3", "b2", "c1"],
+                tie: ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"]
+            }
         }
     };
 
@@ -40,8 +41,10 @@ const b3 = document.getElementById("b3");
 const c1 = document.getElementById("c1");
 const c2 = document.getElementById("c2");
 const c3 = document.getElementById("c3");
+const button = document.querySelector("button");
 
 /*----- event listeners -----*/
+//function render() {
 const clickA1 = a1.addEventListener('click', function(evt) {
     clickedSquare(a1);
 }, {once: true});
@@ -69,12 +72,15 @@ const clickC2 = c2.addEventListener('click', function(evt) {
 const clickC3 = c3.addEventListener('click', function(evt) {
     clickedSquare(c3);
 }, {once: true});
+const clickButton = button.addEventListener('click', function(evt) {
+    init();
+});
+//};
+//render();
 
 /*----- functions -----*/
 
 function clickedSquare(x) {
-    console.log(turnNum);
-    console.log(players.player1.mark);
     console.log(turnNum);
     if (turnNum === 0) {
         x.innerText = players.player1.mark;
@@ -88,6 +94,24 @@ function clickedSquare(x) {
     console.log(turnNum);
     console.log(players.player1.selections);
 };
+
+function init() {
+/*    turnNum = 0;
+    players.player1.selections = [];
+    players.player2.selections = [];
+    a1.innerText = "";
+    a2.innerText = "";
+    a3.innerText = "";
+    b1.innerText = "";
+    b2.innerText = "";
+    b3.innerText = "";
+    c1.innerText = "";
+    c2.innerText = "";
+    c3.innerText = "";
+    console.log(players.player1.selections);
+    render();*/ /*this introduced some weird bugs */
+    location.reload();
+}
 
 //function clickedSquare(x) {
 //    x.innerText = players.player2.mark;
@@ -125,5 +149,23 @@ function clickedSquare(x) {
 ///     the eventlistener after a click.
 
 
-///4/2/22 - 5:29 - I've incorporated an if statement into my click square function 
-///     that now enables the game to switch back and forth between x and o
+///4/2/22 - 5:29pm - I've incorporated an if statement into my click square function 
+///     that now enables the game to switch back and forth between x and o. Going to
+///     take a break for now.
+
+
+///4/2/22 - 11:10pm - I've fixed the issue where my board would re-size on every
+///     click, have added a button and a init function that clears the game when
+///     clicked.  
+///     I would like to add a function that checks to see if someone has won the
+///     game or if there is a tie, along with visual style flourishes and additional
+///     functionality that might make the project more my own.  Unfortunately, I
+///     do not know if I will have time to implement any of these extra features.
+
+///4/2/22 - 11:16pm - Just found a bug where a square can not be clicked again, even
+///     after clicking the start button and invoking the init function
+
+///4/2/22 - 11:34pm - I tried a render function that would add all of the event
+///     listeners again when invoked, but that introduced even more bugs.  I
+///     settled on a much simpler work-around that would simply refresh the page
+///     when the init function is invoked
