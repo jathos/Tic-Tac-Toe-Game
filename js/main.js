@@ -72,30 +72,29 @@ const clickC3 = c3.addEventListener('click', function(evt) {
 
 /*----- functions -----*/
 
-//function clickedB2() {
-//    b2.innerText = players.player2.mark;
-//    players.player2.selections.push("b2");
-//    console.log(players.player2.selections);
-//} ***this is proof of concept code for reference, if needed***
-
 function clickedSquare(x) {
-    x.innerText = players.player2.mark;
-    players.player2.selections.push(x.id);
-    console.log(players.player2.selections);
-    x.removeEventListener('click', function(){clickedSquare(b2)});
+    console.log(turnNum);
+    console.log(players.player1.mark);
+    console.log(turnNum);
+    if (turnNum === 0) {
+        x.innerText = players.player1.mark;
+        players.player1.selections.push(x.id);
+        turnNum = 1;
+} else if (turnNum === 1) {
+        x.innerText = players.player2.mark;
+        players.player2.selections.push(x.id);
+        turnNum = 0
+    };
+    console.log(turnNum);
+    console.log(players.player1.selections);
 };
 
-//do {
-    //if (turnNum = 0) {
-        
-//    } else if (turnNum = 1) {
-
-//    }
-//}
-//while (!players.winner.turnNum = 2);
-
-
-
+//function clickedSquare(x) {
+//    x.innerText = players.player2.mark;
+//    players.player2.selections.push(x.id);
+//    console.log(players.player2.selections);
+//};
+//  ***this is functioning code to return to, if needed
 
 
 
@@ -121,6 +120,10 @@ function clickedSquare(x) {
 
 
 
-///4/2/22 - 4:45pm - I've consolidated some code, and implemented a function on each square
-///     that will display a mark, register the clicked square, and then remove the 
-///     eventlistener after a click.
+///4/2/22 - 4:45pm - I've consolidated some code, and implemented a function on each 
+///     square that will display a mark, register the clicked square, and then remove
+///     the eventlistener after a click.
+
+
+///4/2/22 - 5:29 - I've incorporated an if statement into my click square function 
+///     that now enables the game to switch back and forth between x and o
